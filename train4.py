@@ -169,5 +169,6 @@ class TrainCommand(BaseTransformersCLICommand):
 
         # Save trained pipeline
         self.pipeline.save_pretrained(self.output)
-t = TrainCommand()
+args = parser.parse_args()
+t = TrainCommand(args)
 t.run()
