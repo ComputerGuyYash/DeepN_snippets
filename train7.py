@@ -51,10 +51,6 @@ def train_command_factory(args: Namespace):
 
 
 class TrainCommand(BaseTransformersCLICommand):
-    @staticmethod
-    def register_subcommand(parser: ArgumentParser):
-        
-
     def __init__(self, args: Namespace):
         self.logger = logging.get_logger("transformers-cli/training")
 
