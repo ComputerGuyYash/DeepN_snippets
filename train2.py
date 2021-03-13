@@ -19,8 +19,19 @@ from transformers.data import SingleSentenceClassificationProcessor as Processor
 from transformers.file_utils import is_tf_available, is_torch_available
 from transformers.pipelines import TextClassificationPipeline
 from transformers.utils import logging
-from . import BaseTransformersCLICommand
+from abc import ABC, abstractmethod
+from argparse import ArgumentParser
 
+
+class BaseTransformersCLICommand(ABC):
+    @staticmethod
+    @abstractmethod
+    def register_subcommand(parser: ArgumentParser):
+        raise NotImplementedError()
+
+    @abstractmethod
+    def run(self):
+        raise NotImplementedError()
 
 if not is_tf_available() and not is_torch_available():
     raise RuntimeError("At least one of PyTorch or TensorFlow 2.0+ should be installed to use CLI training")
